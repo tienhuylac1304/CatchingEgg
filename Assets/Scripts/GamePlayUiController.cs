@@ -30,7 +30,7 @@ public class GamePlayUiController : MonoBehaviour
     }
     public void ShowScore(int score)
     {
-        txtScore.GetComponent<Text>().text ="Score: "+ score.ToString();
+        txtScore.GetComponent<Text>().text = "Best Score: " + PlayerPrefs.GetInt("best_score").ToString()+"\nScore: " + score.ToString();
     }
     public void LostHeal(int index)
     {

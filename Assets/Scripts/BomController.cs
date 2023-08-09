@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class EggController : MonoBehaviour
+public class BomController : MonoBehaviour
 {
     GameObject obj;
+    public GameObject basket;
     public GameObject gameController;
+    public Sprite imgBoom;
     // Start is called before the first frame update
     void Start()
     {
         obj = gameObject;
-
-        RefreshEgg();
+        obj.GetComponent<Rigidbody2D>().isKinematic = true;
+        RefresBom();
+        
     }
 
     // Update is called once per frame
@@ -23,19 +27,17 @@ public class EggController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.tag.Equals("break_line")) {
-            RefreshEgg();
-            gameController.GetComponent<GameController>().BrokeEgg();
+            RefresBom();
         }
     }
-    private void RefreshEgg()
+    private void RefresBom()
     {
-        obj.GetComponent<Rigidbody2D>().mass += (float)0.1;
         obj.transform.position = new Vector3(Random.Range(-2, 2), (float)5.5, 0);
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameController.GetComponent<GameController>().AddScore();
-        RefreshEgg();
+        basket.GetComponent<SpriteRenderer>().sprite = imgBoom;
+        //Audio here
+        gameController.GetComponent<GameController>().EndGame();
     }
 }

@@ -40,7 +40,6 @@ public class GameOverController : MonoBehaviour
     }
     void GoToMenu()
     {
-        obj.SetActive(false);
         SceneManager.LoadScene(0);
         SceneManager.UnloadSceneAsync(1);
     }

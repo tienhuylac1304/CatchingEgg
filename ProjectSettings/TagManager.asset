@@ -7,6 +7,8 @@ TagManager:
   - break_line
   - egg
   - basket
+  - eggPrefabs
+  - bom
   layers:
   - Default
   - TransparentFX

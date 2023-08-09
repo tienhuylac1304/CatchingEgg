@@ -10,12 +10,16 @@ public class GameController : MonoBehaviour
     private bool isEndGame;
     public GameObject gamePlayUiController;
     public GameObject gameOverController;
+    private List<GameObject> lstEggs;
+    public GameObject egg;
     // Start is called before the first frame update
     void Start()
     {
+        lstEggs = new List<GameObject>();
         Time.timeScale = 1;
         isEndGame = false;
         score = 0;
+        Invoke("SpawlEgg", 5F);
     }
 
     // Update is called once per frame
@@ -56,5 +60,12 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
+    public void SpawlEgg()
+    {
+        if (lstEggs.Count < 3)
+        {
+            lstEggs.Add(egg);
+            Instantiate(egg);
+        }
+    }
 }
