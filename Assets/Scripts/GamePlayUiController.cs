@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +9,7 @@ public class GamePlayUiController : MonoBehaviour
     public List<Image> heals;
     public GameObject pnlPause;
     public GameObject gameController;
+    public GameObject audioController;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +20,7 @@ public class GamePlayUiController : MonoBehaviour
 
     private void Pause()
     {
+        audioController.GetComponent<AudioController>().GetClickSound();
         if (!gameController.GetComponent<GameController>().GetIsEndGame())
         {
             Time.timeScale = 0;

@@ -11,6 +11,7 @@ public class GameOverController : MonoBehaviour
     public Button btnRestart;
     public Button btnMenu;
     public Button btnQuit;
+    public GameObject audioController;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +20,6 @@ public class GameOverController : MonoBehaviour
         SetOnclick();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void ShowPanel(int score)
     {
         obj.SetActive(true);
@@ -31,15 +27,18 @@ public class GameOverController : MonoBehaviour
     }
     void Quit()
     {
+        audioController.GetComponent<AudioController>().GetClickSound();
         Application.Quit();
     }
     void Restart()
     {
+        audioController.GetComponent<AudioController>().GetClickSound();
         obj.SetActive(false);
         SceneManager.LoadScene(1);
     }
     void GoToMenu()
     {
+        audioController.GetComponent<AudioController>().GetClickSound();
         SceneManager.LoadScene(0);
         SceneManager.UnloadSceneAsync(1);
     }
