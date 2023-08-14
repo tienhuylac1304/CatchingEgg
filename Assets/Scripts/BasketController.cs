@@ -13,13 +13,14 @@ public class BasketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow)&& obj.transform.position.x < 2.2)
+        if (Input.GetMouseButton(0)/*&& obj.transform.position.x < 2.2&& obj.transform.position.x>-2.2*/)
         {
-            obj.transform.position=new Vector3(obj.transform.position.x+Time.deltaTime*5,obj.transform.position.y,0) ;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow)&& obj.transform.position.x > -2.2)
-        {
-            obj.transform.position = new Vector3(obj.transform.position.x - Time.deltaTime*5, obj.transform.position.y, 0);
+            Vector3 mousePos = (Input.mousePosition);
+            Vector2 targetPos = new Vector2(Camera.main.ScreenToWorldPoint(mousePos).x, Camera.main.ScreenToWorldPoint(mousePos).y);
+
+            targetPos.x = Mathf.Clamp(targetPos.x,(float) -1.8,(float) 1.8);
+            transform.position = targetPos;
+
         }
     }
 }
