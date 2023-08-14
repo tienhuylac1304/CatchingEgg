@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - break_line
+  - egg
+  - basket
+  - eggPrefabs
+  - bom
   layers:
   - Default
   - TransparentFX
